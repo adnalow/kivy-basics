@@ -1,21 +1,23 @@
 from kivy.app import App
+from kivy.uix.textinput import TextInput
 from kivy.uix.button import Button
 from kivy.uix.gridlayout import GridLayout
 
 
 class MainApp(App):
     def build(self):
-        layout = GridLayout(cols=2,row_force_default=True, row_default_height=40)
-        btn1 = Button(text='Hello 1', size_hint=(None,None), width=100,height=40)
-        btn2 = Button(text='World 1')
-        
-        btn3 = Button(text='Hello 2',size_hint=(None,None), width=100,height=40)
-        btn4 = Button(text='World 2')
-        
-        layout.add_widget(btn1)
-        layout.add_widget(btn2)
-        layout.add_widget(btn3)
-        layout.add_widget(btn4)
+        layout = GridLayout(cols=2, row_force_default = True, row_default_height = 40,
+                            spacing = 10, padding = 20)
+        self.weight = TextInput(text='Enter weight here:')
+        self.height = TextInput(text='Enter height here:')
+        submit = Button(text='Submit', on_press=self.submit)
+        layout.add_widget(self.weight)
+        layout.add_widget(self.height)
+        layout.add_widget(submit)
         return layout
+    
+    def submit(self,obj):
+        print("Weight: " + self.weight.text)
+        print("Height: " + self.height.text)
         
 MainApp().run()
