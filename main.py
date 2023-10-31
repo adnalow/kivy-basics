@@ -1,19 +1,21 @@
 from kivy.app import App
 from kivy.uix.button import Button
-from kivy.uix.image import Image
-from kivy.uix.boxlayout import BoxLayout
-from kivy.core.window import Window
+from kivy.uix.gridlayout import GridLayout
 
-Window.clearcolor = (1,1,1,1)
-Window.size = (360,600)
 
 class MainApp(App):
     def build(self):
-       layout = BoxLayout(orientation='vertical', spacing = 150, padding = 80)
-       img = Image(source = 'bahay.png')
-       button = Button(text = 'Login', size_hint = (None,None), width= 100, height = 50, pos_hint={'center_x': 0.5})
-       layout.add_widget(img)
-       layout.add_widget(button)
-       return layout
+        layout = GridLayout(cols=2,row_force_default=True, row_default_height=40)
+        btn1 = Button(text='Hello 1', size_hint=(None,None), width=100,height=40)
+        btn2 = Button(text='World 1')
+        
+        btn3 = Button(text='Hello 2',size_hint=(None,None), width=100,height=40)
+        btn4 = Button(text='World 2')
+        
+        layout.add_widget(btn1)
+        layout.add_widget(btn2)
+        layout.add_widget(btn3)
+        layout.add_widget(btn4)
+        return layout
         
 MainApp().run()
